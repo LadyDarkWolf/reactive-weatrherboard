@@ -2,19 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
     <meta
-      name="description"
-      content="Web site created using create-react-app"
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <meta name="theme-color" content="#000000" />
     <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -24,10 +22,24 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>Reactive WeatherBoard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link href="styles/styles.css" rel="stylesheet" />
   </head>
+
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript> You need to enable JavaScript to run this app. </noscript>
     <div id="root"></div>
     <!--
       This HTML file is a template.
@@ -41,3 +53,123 @@
     -->
   </body>
 </html>
+
+<!-- OLD CODE TO COPY
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WeatherBoard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link href="styles/styles.css" rel="stylesheet" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="col-2">
+          <a href="" class="fav" id="fav-1">New York</a>
+        </div>
+        <div class="col-2">
+          <a href="" class="fav" id="fav-2"> Sydney</a>
+        </div>
+        <div class="col-2">
+          <a href="" class="fav" id="fav-3">Tokyo</a>
+        </div>
+        <div class="col-2">
+          <a href="" class="fav" id="fav-4">Christchurch</a>
+        </div>
+        <div class="col-4 text-center">
+          <button class="btn btn-info" id="unit-change-F">°F</button>
+          <button class="btn btn-info" id="unit-change-C">°C</button>
+          <button class="btn btn-info" id="unit-change-K">K</button>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <form id="city-search">
+          <div class="col-12">
+            <input
+              type="text"
+              width:90%;
+              id="city-field"
+              class="location-search"
+              placeholder="Search for your location"
+            />
+            <input
+              type="submit"
+              class="btn btn-success"
+              id="search-request"
+              name="search"
+              value="Search"
+            />
+            <input
+              type="submit"
+              id="local-request"
+              class="btn btn-primary"
+              name="search"
+              value="Current Location"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="row current-row justify-content-start">
+        <div class="col-3 align-self-start">
+          <div class="current-location current-standout" id="current-location">
+            Murrumbateman
+          </div>
+          <div class="current-datetime" id="current-datetime">Sunday 14:03</div>
+          <div class="current-weather" id="current-weather">Thunderstorms</div>
+        </div>
+        <div class="col-6 align-self-center current-standout">
+          <div class="current-icon">
+            <img
+              id="current-icon"
+              src="http://openweathermap.org/img/wn/10d@2x.png"
+            />
+          </div>
+          <div class="current-temp" id="current-temp">8°C</div>
+          <div class="current-feels">
+            Feels like <span id="current-feels">6°C</span>
+          </div>
+        </div>
+        <div class="col-3 align-self-center">
+          <div class="current-humidity">
+            <strong>Humidity:</strong> <span id="current_humidity">95</span>%
+          </div>
+          <div class="current-winds">
+            <strong>Wind:</strong> <span id="current-winds">WNW 6 km/h</span>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-2 align-self-center">
+          <a
+            class="github-link"
+            href="https://github.com/LadyDarkWolf/WeatherBoard"
+            >GitHub Respository</a
+          >
+        </div>
+      </div>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>
+
+
+-->
